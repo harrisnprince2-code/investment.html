@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Christy Cullen | Login</title>
+  <title>Login | Investment Portal</title>
 
   <style>
     * {
@@ -31,14 +31,14 @@
       border: 1px solid #1f8f4d;
       border-radius: 22px;
       padding: 40px 28px;
-      box-shadow: 0 20px 60px rgba(0, 255, 100, 0.12);
+      box-shadow: 0 20px 60px rgba(0,255,100,.12);
     }
 
     .logo {
       width: 70px;
       height: 70px;
       border-radius: 50%;
-      background: #168a45;
+      background: #19a94f;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -49,7 +49,6 @@
 
     h1 {
       text-align: center;
-      font-size: 27px;
       margin-bottom: 8px;
     }
 
@@ -62,8 +61,8 @@
     label {
       display: block;
       margin-bottom: 8px;
-      font-size: 14px;
       color: #d8eadc;
+      font-size: 14px;
     }
 
     input {
@@ -79,7 +78,7 @@
     }
 
     input:focus {
-      border-color: #25b85d;
+      border-color: #21c65f;
     }
 
     button {
@@ -98,11 +97,23 @@
       background: #21c65f;
     }
 
-    .error {
-      display: none;
+    .message {
       text-align: center;
-      color: #ff7777;
       margin-top: 15px;
+      color: #ff7777;
+      font-size: 14px;
+    }
+
+    .signup {
+      text-align: center;
+      margin-top: 20px;
+      color: #a9c5b2;
+    }
+
+    .signup a {
+      color: #35d96e;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -111,14 +122,18 @@
 
   <div class="login-box">
 
-    <div class="logo">CC</div>
+    <div class="logo">IP</div>
 
     <h1>Welcome Back</h1>
-    <p class="subtitle">Sign in to your investment account</p>
+
+    <p class="subtitle">
+      Login to your investment account
+    </p>
 
     <form id="loginForm">
 
-      <label>Email</label>
+      <label>Email Address</label>
+
       <input
         type="email"
         id="email"
@@ -127,6 +142,7 @@
       >
 
       <label>Password</label>
+
       <input
         type="password"
         id="password"
@@ -134,37 +150,110 @@
         required
       >
 
-      <button type="submit">LOGIN</button>
+      <button type="submit">
+        LOGIN
+      </button>
 
-      <p class="error" id="error">
-        Please enter the correct login details.
-      </p>
+      <div class="message" id="message"></div>
 
     </form>
 
+    <div class="signup">
+      Don't have an account?
+      <a href="signup.html">Create Account</a>
+    </div>
+
   </div>
 
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
+  <script type="module">
 
-      /*
-        Replace these with the credentials you want
-        to use for your private test account.
-      */
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
-      const correctEmail = "christy@example.com";
-      const correctPassword = "Christy123";
+    import {
+      getAuth,
+      signInWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-      if (email === correctEmail && password === correctPassword) {
-        window.location.href = "investment.html";
-      } else {
-        document.getElementById("error").style.display = "block";
-      }
-    });
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB9A9cHTxi6tOqDRbQ5iW6DBk32z4f-7Vk",
+      authDomain: "investment-d2eff.firebaseapp.com",
+      projectId: "investment-d2eff",
+      storageBucket: "investment-d2eff.firebasestorage.app",
+      messagingSenderId: "857545616627",
+      appId: "1:857545616627:web:5df53c1e2dd4551e3d1b86",
+      measurementId: "G-LXL1ZQ01SK"
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+
+    document
+      .getElementById("loginForm")
+      .addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+
+        const email =
+          document.getElementById("email").value.trim();
+
+        const password =
+          document.getElementById("password").value;
+
+        const message =
+          document.getElementById("message");
+
+
+        try {
+
+          message.style.color = "#35d96e";
+
+          message.textContent =
+            "Signing in...";
+
+
+          await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+          window.location.href =
+            "investment.html";
+
+
+        } catch (error) {
+
+          console.error(error);
+
+          message.style.color = "#ff7777";
+
+          if (
+            error.code === "auth/invalid-credential" ||
+            error.code === "auth/wrong-password" ||
+            error.code === "auth/user-not-found"
+          ) {
+
+            message.textContent =
+              "Invalid email or password.";
+
+          } else {
+
+            message.textContent =
+              error.message;
+          }
+
+        }
+
+      });
+
   </script>
 
 </body>
