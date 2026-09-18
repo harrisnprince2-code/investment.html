@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Christy Cullen | Investment Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(120, 20, 60, .35), transparent 35%),
+        #050505;
+      color: white;
+      min-height: 100vh;
+      padding: 25px 16px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .profile {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6d1235, #b33161);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+      border: 2px solid #9c3155;
+    }
+
+    .header h1 {
+      font-size: 22px;
+      letter-spacing: .5px;
+    }
+
+    .header p {
+      color: #aaa;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .badge {
+      margin-left: auto;
+      background: rgba(46, 180, 105, .15);
+      color: #55d991;
+      border: 1px solid rgba(85, 217, 145, .35);
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .main-card {
+      background: linear-gradient(145deg, #171117, #0b0b0b);
+      border: 1px solid #351521;
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 18px;
+      box-shadow: 0 15px 45px rgba(0,0,0,.4);
+    }
+
+    .label {
+      color: #999;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .balance {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .profit {
+      color: #50d58a;
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: #101010;
+      border: 1px solid #292929;
+      border-radius: 17px;
+      padding: 20px;
+    }
+
+    .card h2 {
+      font-size: 23px;
+      margin-top: 8px;
+    }
+
+    .green {
+      color: #50d58a;
+    }
+
+    .wine {
+      color: #d45b82;
+    }
+
+    .details {
+      background: #101010;
+      border: 1px solid #292929;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .detail {
+      display: flex;
+      justify-content: space-between;
+      padding: 17px 20px;
+      border-bottom: 1px solid #242424;
+      font-size: 14px;
+    }
+
+    .detail:last-child {
+      border-bottom: none;
+    }
+
+    .detail span:first-child {
+      color: #999;
+    }
+
+    .detail span:last-child {
+      font-weight: 600;
+    }
+
+    .withdraw {
+      background: linear-gradient(135deg, #5e102f, #8c2049);
+      border: none;
+      width: 100%;
+      padding: 17px;
+      color: white;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .withdraw:hover {
+      opacity: .9;
+    }
+
+    .notice {
+      text-align: center;
+      color: #777;
+      font-size: 11px;
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 18px 12px;
+      }
+
+      .main-card {
+        padding: 22px;
+      }
+
+      .balance {
+        font-size: 34px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .badge {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">
+
+      <div class="profile">
+        CC
+      </div>
+
+      <div>
+        <h1>CHRISTY CULLEN</h1>
+        <p>Investment Account</p>
+      </div>
+
+      <div class="badge">
+        ACTIVE
+      </div>
+
+    </div>
+
+    <div class="main-card">
+
+      <div class="label">
+        Current Balance
+      </div>
+
+      <div class="balance">
+        $13,500
+      </div>
+
+      <div class="profit">
+        +$11,000 current profit
+      </div>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="label">Amount Invested</div>
+        <h2>$2,500</h2>
+      </div>
+
+      <div class="card">
+        <div class="label">Current Profit</div>
+        <h2 class="green">$11,000</h2>
+      </div>
+
+      <div class="card">
+        <div class="label">Expected Profit</div>
+        <h2 class="wine">$18,000</h2>
+      </div>
+
+      <div class="card">
+        <div class="label">Expected Balance</div>
+        <h2>$20,500</h2>
+      </div>
+
+    </div>
+
+    <div class="details">
+
+      <div class="detail">
+        <span>Investment Date</span>
+        <span>20 August 2026</span>
+      </div>
+
+      <div class="detail">
+        <span>Withdrawal Date</span>
+        <span>30 November 2026</span>
+      </div>
+
+      <div class="detail">
+        <span>Investment Status</span>
+        <span class="green">Active</span>
+      </div>
+
+      <div class="detail">
+        <span>Account Holder</span>
+        <span>Christy Cullen</span>
+      </div>
+
+    </div>
+
+    <button class="withdraw" onclick="withdrawMessage()">
+      Withdrawal Details
+    </button>
+
+    <div class="notice">
+      Investment account dashboard
+    </div>
+
+  </div>
+
+  <script>
+    function withdrawMessage() {
+      alert("Withdrawal is scheduled for 30 November 2026.");
+    }
+  </script>
+
+</body>
+</html>
