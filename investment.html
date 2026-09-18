@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Christy Cullen | Investment Dashboard</title>
+  <title>Christy Cullen | Private Investment Dashboard</title>
 
   <style>
     * {
@@ -14,130 +14,218 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f8f5;
-      color: #17231b;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(15, 145, 75, .18), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(4, 91, 45, .12), transparent 35%),
+        #f5f8f6;
+      color: #15231a;
+      min-height: 100vh;
     }
 
     .topbar {
-      background: #087a3d;
+      background: #071b11;
       color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 21px;
-      font-weight: bold;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .secure {
+      font-size: 12px;
+      color: #9ee4b8;
     }
 
     .container {
       width: 92%;
-      max-width: 900px;
-      margin: 30px auto;
+      max-width: 1050px;
+      margin: 35px auto 60px;
     }
 
+    /* PROFILE */
+
     .profile {
-      background: white;
-      border-radius: 20px;
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      background: linear-gradient(135deg, #0b6f39, #073c23);
+      color: white;
+      border-radius: 26px;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      box-shadow: 0 18px 45px rgba(3, 59, 31, .20);
       margin-bottom: 22px;
     }
 
     .profile-picture {
-      width: 110px;
-      height: 110px;
+      width: 92px;
+      height: 92px;
       border-radius: 50%;
-      background: #087a3d;
-      color: white;
+      background: #dff6e7;
+      color: #08733a;
       display: flex;
-      align-items: center;
       justify-content: center;
-      margin: 0 auto 15px;
-      font-size: 36px;
-      font-weight: bold;
-      border: 5px solid #e1f2e7;
+      align-items: center;
+      font-size: 30px;
+      font-weight: 800;
+      border: 4px solid rgba(255,255,255,.65);
+      flex-shrink: 0;
     }
 
     .profile h1 {
-      font-size: 27px;
-      margin-bottom: 6px;
+      font-size: 28px;
+      margin-bottom: 7px;
+      letter-spacing: .5px;
     }
 
     .profile p {
-      color: #69756e;
-    }
-
-    .status {
-      display: inline-block;
-      margin-top: 14px;
-      background: #e3f7ea;
-      color: #087a3d;
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    .main-balance {
-      background: #087a3d;
-      color: white;
-      border-radius: 20px;
-      padding: 28px;
-      margin-bottom: 20px;
-    }
-
-    .main-balance p {
-      opacity: .85;
+      color: #c8ead5;
       font-size: 14px;
-      margin-bottom: 10px;
     }
 
-    .main-balance h2 {
-      font-size: 38px;
+    .active {
+      display: inline-block;
+      margin-top: 13px;
+      padding: 7px 13px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.13);
+      color: #b6f0ca;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,.16);
     }
+
+    /* BALANCE */
+
+    .balance {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 12px 35px rgba(0,0,0,.06);
+      margin-bottom: 22px;
+      border: 1px solid #e4ece7;
+    }
+
+    .balance-label {
+      color: #718078;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 9px;
+    }
+
+    .balance h2 {
+      font-size: 42px;
+      color: #075f30;
+      margin-bottom: 8px;
+    }
+
+    .balance-sub {
+      color: #6f7b74;
+      font-size: 14px;
+    }
+
+    /* CARDS */
 
     .cards {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
+      margin-bottom: 22px;
     }
 
     .card {
       background: white;
-      border-radius: 16px;
-      padding: 22px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid #e4ece7;
+      box-shadow: 0 10px 30px rgba(0,0,0,.05);
     }
 
-    .card h3 {
-      color: #69756e;
+    .card-label {
+      color: #748078;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .9px;
+      margin-bottom: 11px;
+    }
+
+    .card-value {
+      font-size: 27px;
+      font-weight: 800;
+      color: #08733a;
+    }
+
+    /* WITHDRAW */
+
+    .action-box {
+      background: #071b11;
+      color: white;
+      border-radius: 24px;
+      padding: 25px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .action-box h2 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .action-box p {
+      color: #a9c8b5;
       font-size: 13px;
-      margin-bottom: 10px;
     }
 
-    .amount {
-      color: #087a3d;
-      font-size: 25px;
-      font-weight: bold;
+    .withdraw-btn {
+      border: none;
+      background: #25a65a;
+      color: white;
+      padding: 14px 23px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s;
+      white-space: nowrap;
     }
+
+    .withdraw-btn:hover {
+      background: #1d8e4d;
+      transform: translateY(-1px);
+    }
+
+    /* DETAILS */
 
     .details {
       background: white;
-      margin-top: 20px;
-      padding: 24px;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      border-radius: 24px;
+      padding: 26px;
+      border: 1px solid #e4ece7;
+      box-shadow: 0 10px 30px rgba(0,0,0,.05);
     }
 
     .details h2 {
       margin-bottom: 18px;
+      font-size: 21px;
     }
 
     .row {
       display: flex;
       justify-content: space-between;
-      padding: 15px 0;
-      border-bottom: 1px solid #edf0ee;
+      gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid #edf1ee;
     }
 
     .row:last-child {
@@ -145,48 +233,116 @@
     }
 
     .label {
-      color: #69756e;
+      color: #758078;
+      font-size: 14px;
     }
 
     .value {
-      font-weight: bold;
+      font-weight: 700;
+      font-size: 14px;
       text-align: right;
     }
 
-    .active {
-      color: #087a3d;
+    .green {
+      color: #08733a;
     }
 
-    .notice {
-      margin-top: 20px;
-      padding: 18px;
-      background: #eaf7ee;
-      border-left: 4px solid #087a3d;
-      border-radius: 8px;
-      color: #31543e;
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal-box {
+      background: white;
+      width: 100%;
+      max-width: 430px;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 25px 70px rgba(0,0,0,.25);
+    }
+
+    .modal-box h2 {
+      margin-bottom: 8px;
+    }
+
+    .modal-box p {
+      color: #68736d;
       font-size: 14px;
       line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .close-btn {
+      width: 100%;
+      border: none;
+      padding: 13px;
+      border-radius: 9px;
+      background: #071b11;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
     }
 
     footer {
       text-align: center;
-      padding: 30px 10px;
-      color: #7b857e;
-      font-size: 13px;
+      color: #7a847e;
+      font-size: 12px;
+      padding: 20px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
+
+      .topbar {
+        padding: 16px 5%;
+      }
+
+      .container {
+        width: 94%;
+        margin-top: 22px;
+      }
+
+      .profile {
+        padding: 24px;
+      }
+
+      .profile h1 {
+        font-size: 23px;
+      }
+
+      .profile-picture {
+        width: 75px;
+        height: 75px;
+        font-size: 25px;
+      }
+
       .cards {
         grid-template-columns: 1fr;
       }
 
-      .main-balance h2 {
-        font-size: 32px;
+      .balance h2 {
+        font-size: 34px;
+      }
+
+      .action-box {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .withdraw-btn {
+        width: 100%;
       }
 
       .row {
         flex-direction: column;
-        gap: 6px;
+        gap: 7px;
       }
 
       .value {
@@ -198,9 +354,11 @@
 
 <body>
 
-  <div class="topbar">
-    Investment Dashboard
-  </div>
+  <header class="topbar">
+    <div class="brand">PRIVATE INVESTMENT</div>
+    <div class="secure">CLIENT DASHBOARD</div>
+  </header>
+
 
   <main class="container">
 
@@ -212,24 +370,31 @@
         CC
       </div>
 
-      <h1>CHRISTY CULLEN</h1>
+      <div>
+        <h1>CHRISTY CULLEN</h1>
+        <p>Private Investment Account</p>
 
-      <p>Investment Account</p>
-
-      <div class="status">
-        ● ACTIVE
+        <span class="active">
+          ● ACCOUNT ACTIVE
+        </span>
       </div>
 
     </section>
 
 
-    <!-- CURRENT TOTAL -->
+    <!-- CURRENT BALANCE -->
 
-    <section class="main-balance">
+    <section class="balance">
 
-      <p>CURRENT TOTAL</p>
+      <div class="balance-label">
+        Current Total
+      </div>
 
       <h2>$13,500.00</h2>
+
+      <div class="balance-sub">
+        Current investment value
+      </div>
 
     </section>
 
@@ -239,29 +404,73 @@
     <section class="cards">
 
       <div class="card">
-        <h3>INVESTED AMOUNT</h3>
-        <div class="amount">$2,500.00</div>
+        <div class="card-label">
+          Invested Amount
+        </div>
+
+        <div class="card-value">
+          $2,500.00
+        </div>
       </div>
 
-      <div class="card">
-        <h3>CURRENT PROFIT</h3>
-        <div class="amount">$11,000.00</div>
-      </div>
 
       <div class="card">
-        <h3>EXPECTED PROFIT</h3>
-        <div class="amount">$18,000.00</div>
+        <div class="card-label">
+          Current Profit
+        </div>
+
+        <div class="card-value">
+          $11,000.00
+        </div>
       </div>
 
+
       <div class="card">
-        <h3>EXPECTED TOTAL</h3>
-        <div class="amount">$20,500.00</div>
+        <div class="card-label">
+          Expected Profit
+        </div>
+
+        <div class="card-value">
+          $18,000.00
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="card-label">
+          Expected Total
+        </div>
+
+        <div class="card-value">
+          $20,500.00
+        </div>
       </div>
 
     </section>
 
 
-    <!-- INVESTMENT DETAILS -->
+    <!-- WITHDRAWAL -->
+
+    <section class="action-box">
+
+      <div>
+        <h2>Withdrawal</h2>
+
+        <p>
+          Submit a withdrawal request for review.
+        </p>
+      </div>
+
+      <button
+        class="withdraw-btn"
+        id="withdrawBtn">
+        Withdraw Funds
+      </button>
+
+    </section>
+
+
+    <!-- DETAILS -->
 
     <section class="details">
 
@@ -284,23 +493,74 @@
 
       <div class="row">
         <span class="label">Account Status</span>
-        <span class="value active">ACTIVE</span>
+        <span class="value green">ACTIVE</span>
       </div>
 
     </section>
-
-
-    <div class="notice">
-      This dashboard displays the investment information assigned to this account.
-      Please contact the account administrator if any information needs to be updated.
-    </div>
 
   </main>
 
 
   <footer>
-    © 2026 Investment Dashboard
+    © 2026 Private Investment Dashboard
   </footer>
+
+
+  <!-- WITHDRAWAL MODAL -->
+
+  <div class="modal" id="withdrawModal">
+
+    <div class="modal-box">
+
+      <h2>Withdrawal Request</h2>
+
+      <p>
+        A withdrawal request can be submitted for review.
+        No funds are transferred by this dashboard itself.
+      </p>
+
+      <button
+        class="close-btn"
+        id="closeModal">
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    const withdrawBtn =
+      document.getElementById("withdrawBtn");
+
+    const withdrawModal =
+      document.getElementById("withdrawModal");
+
+    const closeModal =
+      document.getElementById("closeModal");
+
+
+    withdrawBtn.addEventListener("click", function() {
+      withdrawModal.style.display = "flex";
+    });
+
+
+    closeModal.addEventListener("click", function() {
+      withdrawModal.style.display = "none";
+    });
+
+
+    withdrawModal.addEventListener("click", function(event) {
+
+      if (event.target === withdrawModal) {
+        withdrawModal.style.display = "none";
+      }
+
+    });
+
+  </script>
 
 </body>
 </html>
