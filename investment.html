@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Investment Dashboard</title>
+  <title>Christy Cullen | Investment Dashboard</title>
 
   <style>
     * {
@@ -19,80 +19,81 @@
       color: #17231b;
     }
 
-    header {
-      background: #0b7a3b;
+    .topbar {
+      background: #087a3d;
       color: white;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
+      padding: 20px;
+      text-align: center;
       font-size: 21px;
       font-weight: bold;
     }
 
-    .logout {
-      background: white;
-      color: #0b7a3b;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 7px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
     .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: 35px auto;
-    }
-
-    .welcome {
-      margin-bottom: 25px;
-    }
-
-    .welcome h1 {
-      font-size: 30px;
-      margin-bottom: 7px;
-    }
-
-    .welcome p {
-      color: #68736c;
+      width: 92%;
+      max-width: 900px;
+      margin: 30px auto;
     }
 
     .profile {
       background: white;
-      border-radius: 15px;
-      padding: 22px;
-      margin-bottom: 25px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-      display: flex;
-      align-items: center;
-      gap: 15px;
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      margin-bottom: 22px;
     }
 
-    .avatar {
-      width: 58px;
-      height: 58px;
-      background: #0b7a3b;
-      color: white;
+    .profile-picture {
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
+      background: #087a3d;
+      color: white;
       display: flex;
-      justify-content: center;
       align-items: center;
-      font-size: 21px;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 36px;
       font-weight: bold;
+      border: 5px solid #e1f2e7;
     }
 
-    .profile h2 {
-      margin-bottom: 5px;
+    .profile h1 {
+      font-size: 27px;
+      margin-bottom: 6px;
     }
 
     .profile p {
-      color: #69736d;
+      color: #69756e;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 14px;
+      background: #e3f7ea;
+      color: #087a3d;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .main-balance {
+      background: #087a3d;
+      color: white;
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .main-balance p {
+      opacity: .85;
       font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .main-balance h2 {
+      font-size: 38px;
     }
 
     .cards {
@@ -103,41 +104,40 @@
 
     .card {
       background: white;
-      border-radius: 15px;
+      border-radius: 16px;
       padding: 22px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
     }
 
     .card h3 {
-      color: #68736c;
-      font-size: 14px;
-      margin-bottom: 12px;
+      color: #69756e;
+      font-size: 13px;
+      margin-bottom: 10px;
     }
 
     .amount {
-      font-size: 27px;
+      color: #087a3d;
+      font-size: 25px;
       font-weight: bold;
-      color: #0b7a3b;
     }
 
     .details {
       background: white;
-      margin-top: 25px;
-      padding: 22px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+      margin-top: 20px;
+      padding: 24px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
     }
 
     .details h2 {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .row {
       display: flex;
       justify-content: space-between;
-      padding: 14px 0;
-      border-bottom: 1px solid #e8eee9;
-      gap: 20px;
+      padding: 15px 0;
+      border-bottom: 1px solid #edf0ee;
     }
 
     .row:last-child {
@@ -145,7 +145,7 @@
     }
 
     .label {
-      color: #68736c;
+      color: #69756e;
     }
 
     .value {
@@ -153,47 +153,44 @@
       text-align: right;
     }
 
-    .status {
-      color: #0b7a3b;
-      font-weight: bold;
+    .active {
+      color: #087a3d;
     }
 
-    .loading {
+    .notice {
+      margin-top: 20px;
+      padding: 18px;
+      background: #eaf7ee;
+      border-left: 4px solid #087a3d;
+      border-radius: 8px;
+      color: #31543e;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    footer {
       text-align: center;
-      padding: 60px 20px;
-      color: #0b7a3b;
-      font-size: 18px;
+      padding: 30px 10px;
+      color: #7b857e;
+      font-size: 13px;
     }
 
-    .error {
-      background: #ffe9e9;
-      color: #b42318;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      display: none;
-    }
-
-    @media (max-width: 650px) {
+    @media (max-width: 600px) {
       .cards {
         grid-template-columns: 1fr;
       }
 
-      .welcome h1 {
-        font-size: 25px;
+      .main-balance h2 {
+        font-size: 32px;
       }
 
       .row {
         flex-direction: column;
-        gap: 5px;
+        gap: 6px;
       }
 
       .value {
         text-align: left;
-      }
-
-      header {
-        padding: 15px 5%;
       }
     }
   </style>
@@ -201,322 +198,109 @@
 
 <body>
 
-  <header>
-    <div class="logo">Investment Portal</div>
-    <button class="logout" id="logoutBtn">Logout</button>
-  </header>
+  <div class="topbar">
+    Investment Dashboard
+  </div>
 
   <main class="container">
 
-    <div id="loading" class="loading">
-      Loading your investment account...
-    </div>
+    <!-- PROFILE -->
 
-    <div id="content" style="display:none;">
+    <section class="profile">
 
-      <div class="welcome">
-        <h1>Welcome, <span id="userName">User</span> 👋</h1>
-        <p>Here is your personalized investment dashboard.</p>
+      <div class="profile-picture">
+        CC
       </div>
 
-      <div id="errorBox" class="error"></div>
+      <h1>CHRISTY CULLEN</h1>
 
-      <div class="profile">
-        <div class="avatar" id="avatar">U</div>
+      <p>Investment Account</p>
 
-        <div>
-          <h2 id="profileName">User</h2>
-          <p id="profileEmail">Loading email...</p>
-        </div>
+      <div class="status">
+        ● ACTIVE
       </div>
 
-      <div class="cards">
+    </section>
 
-        <div class="card">
-          <h3>INVESTED AMOUNT</h3>
-          <div class="amount" id="investedAmount">$0</div>
-        </div>
 
-        <div class="card">
-          <h3>CURRENT PROFIT</h3>
-          <div class="amount" id="currentProfit">$0</div>
-        </div>
+    <!-- CURRENT TOTAL -->
 
-        <div class="card">
-          <h3>CURRENT TOTAL</h3>
-          <div class="amount" id="currentTotal">$0</div>
-        </div>
+    <section class="main-balance">
 
-        <div class="card">
-          <h3>EXPECTED PROFIT</h3>
-          <div class="amount" id="expectedProfit">$0</div>
-        </div>
+      <p>CURRENT TOTAL</p>
 
-        <div class="card">
-          <h3>EXPECTED TOTAL</h3>
-          <div class="amount" id="expectedTotal">$0</div>
-        </div>
+      <h2>$13,500.00</h2>
 
+    </section>
+
+
+    <!-- FINANCIAL CARDS -->
+
+    <section class="cards">
+
+      <div class="card">
+        <h3>INVESTED AMOUNT</h3>
+        <div class="amount">$2,500.00</div>
       </div>
 
-      <div class="details">
-
-        <h2>Investment Details</h2>
-
-        <div class="row">
-          <span class="label">Investment Date</span>
-          <span class="value" id="investmentDate">—</span>
-        </div>
-
-        <div class="row">
-          <span class="label">Withdrawal Date</span>
-          <span class="value" id="withdrawalDate">—</span>
-        </div>
-
-        <div class="row">
-          <span class="label">Account Status</span>
-          <span class="value status" id="status">ACTIVE</span>
-        </div>
-
+      <div class="card">
+        <h3>CURRENT PROFIT</h3>
+        <div class="amount">$11,000.00</div>
       </div>
 
+      <div class="card">
+        <h3>EXPECTED PROFIT</h3>
+        <div class="amount">$18,000.00</div>
+      </div>
+
+      <div class="card">
+        <h3>EXPECTED TOTAL</h3>
+        <div class="amount">$20,500.00</div>
+      </div>
+
+    </section>
+
+
+    <!-- INVESTMENT DETAILS -->
+
+    <section class="details">
+
+      <h2>Investment Details</h2>
+
+      <div class="row">
+        <span class="label">Investor</span>
+        <span class="value">CHRISTY CULLEN</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Investment Date</span>
+        <span class="value">20 August 2026</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Withdrawal Date</span>
+        <span class="value">30 November 2026</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Account Status</span>
+        <span class="value active">ACTIVE</span>
+      </div>
+
+    </section>
+
+
+    <div class="notice">
+      This dashboard displays the investment information assigned to this account.
+      Please contact the account administrator if any information needs to be updated.
     </div>
 
   </main>
 
 
-  <script type="module">
-
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-
-    import {
-      getAuth,
-      onAuthStateChanged,
-      signOut
-    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
-    import {
-      getFirestore,
-      doc,
-      getDoc
-    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-
-    // FIREBASE CONFIG
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyB9A9cHTxi6tOqDRbQ5iW6DBk32z4f-7Vk",
-      authDomain: "investment-d2eff.firebaseapp.com",
-      projectId: "investment-d2eff",
-      storageBucket: "investment-d2eff.firebasestorage.app",
-      messagingSenderId: "857545616627",
-      appId: "1:857545616627:web:5df53c1e2dd4551e3d1b86",
-      measurementId: "G-LXL1ZQ01SK"
-    };
-
-
-    // INITIALIZE FIREBASE
-
-    const app = initializeApp(firebaseConfig);
-
-    const auth = getAuth(app);
-
-    const db = getFirestore(app);
-
-
-    // ELEMENTS
-
-    const loading = document.getElementById("loading");
-    const content = document.getElementById("content");
-    const errorBox = document.getElementById("errorBox");
-
-
-    // FORMAT MONEY
-
-    function money(value) {
-
-      const number = Number(value) || 0;
-
-      return "$" + number.toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
-
-    }
-
-
-    // GET INITIALS
-
-    function getInitials(name) {
-
-      if (!name) return "U";
-
-      const words = name.trim().split(" ");
-
-      if (words.length === 1) {
-        return words[0].charAt(0).toUpperCase();
-      }
-
-      return (
-        words[0].charAt(0) +
-        words[words.length - 1].charAt(0)
-      ).toUpperCase();
-
-    }
-
-
-    // CHECK LOGIN
-
-    onAuthStateChanged(auth, async (user) => {
-
-      if (!user) {
-
-        window.location.href = "login.html";
-
-        return;
-
-      }
-
-
-      try {
-
-        // GET USER DOCUMENT
-
-        const userRef = doc(db, "users", user.uid);
-
-        const userSnap = await getDoc(userRef);
-
-
-        if (!userSnap.exists()) {
-
-          throw new Error("Your investment account information was not found.");
-
-        }
-
-
-        const data = userSnap.data();
-
-
-        // USER NAME
-
-        const name =
-          data.name ||
-          user.displayName ||
-          "User";
-
-
-        document.getElementById("userName").textContent = name;
-
-        document.getElementById("profileName").textContent = name;
-
-        document.getElementById("profileEmail").textContent =
-          data.email || user.email || "";
-
-
-        // AVATAR
-
-        document.getElementById("avatar").textContent =
-          getInitials(name);
-
-
-        // INVESTMENT VALUES
-
-        const invested =
-          Number(data.investedAmount) || 0;
-
-        const currentProfit =
-          Number(data.currentProfit) || 0;
-
-        const expectedProfit =
-          Number(data.expectedProfit) || 0;
-
-
-        const currentTotal =
-          invested + currentProfit;
-
-        const expectedTotal =
-          invested + expectedProfit;
-
-
-        document.getElementById("investedAmount").textContent =
-          money(invested);
-
-        document.getElementById("currentProfit").textContent =
-          money(currentProfit);
-
-        document.getElementById("currentTotal").textContent =
-          money(currentTotal);
-
-        document.getElementById("expectedProfit").textContent =
-          money(expectedProfit);
-
-        document.getElementById("expectedTotal").textContent =
-          money(expectedTotal);
-
-
-        // DATES
-
-        document.getElementById("investmentDate").textContent =
-          data.investmentDate || "Not assigned";
-
-
-        document.getElementById("withdrawalDate").textContent =
-          data.withdrawalDate || "Not assigned";
-
-
-        // STATUS
-
-        document.getElementById("status").textContent =
-          data.status || "ACTIVE";
-
-
-        // SHOW DASHBOARD
-
-        loading.style.display = "none";
-
-        content.style.display = "block";
-
-
-      } catch (error) {
-
-        console.error(error);
-
-        loading.style.display = "none";
-
-        content.style.display = "block";
-
-        errorBox.style.display = "block";
-
-        errorBox.textContent =
-          "Unable to load your investment information. Please check your Firebase Firestore setup.";
-
-      }
-
-    });
-
-
-    // LOGOUT
-
-    document.getElementById("logoutBtn").addEventListener("click", async () => {
-
-      try {
-
-        await signOut(auth);
-
-        window.location.href = "login.html";
-
-      } catch (error) {
-
-        console.error(error);
-
-        alert("Unable to logout. Please try again.");
-
-      }
-
-    });
-
-  </script>
+  <footer>
+    © 2026 Investment Dashboard
+  </footer>
 
 </body>
 </html>
