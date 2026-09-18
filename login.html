@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Christy Cullen | Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #06140b;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 420px;
+      background: #0b1f12;
+      border: 1px solid #1f8f4d;
+      border-radius: 22px;
+      padding: 40px 28px;
+      box-shadow: 0 20px 60px rgba(0, 255, 100, 0.12);
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #168a45;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+      margin: 0 auto 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #a9c5b2;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #d8eadc;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      border: 1px solid #285d3c;
+      background: #06140b;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #25b85d;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: #19a94f;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #21c65f;
+    }
+
+    .error {
+      display: none;
+      text-align: center;
+      color: #ff7777;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+
+    <div class="logo">CC</div>
+
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Sign in to your investment account</p>
+
+    <form id="loginForm">
+
+      <label>Email</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter your email"
+        required
+      >
+
+      <label>Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        required
+      >
+
+      <button type="submit">LOGIN</button>
+
+      <p class="error" id="error">
+        Please enter the correct login details.
+      </p>
+
+    </form>
+
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      /*
+        Replace these with the credentials you want
+        to use for your private test account.
+      */
+
+      const correctEmail = "christy@example.com";
+      const correctPassword = "Christy123";
+
+      if (email === correctEmail && password === correctPassword) {
+        window.location.href = "investment.html";
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    });
+  </script>
+
+</body>
+</html>
